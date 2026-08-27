@@ -3,7 +3,8 @@ public import Tagged
 
 extension Tagged where Underlying: Serializable, Underlying.Serializer.Output == Underlying {
 
-    public struct UnderlyingSerializer: Serializer_Primitive.Serializer.`Protocol` {
+    /// A serializer that delegates a tagged value to its underlying serializer.
+    public struct UnderlyingSerializer: SerializerProtocol {
 
         @inlinable
         public init() {}
@@ -30,12 +31,13 @@ where Underlying: Serializable, Underlying.Serializer.Output == Underlying {
     }
 }
 
-extension Tagged: Serializable
+extension Tagged: @retroactive Serializable
 where
     Underlying: Serializable,
     Underlying.Serializer.Output == Underlying
 {
 
+    /// The underlying value's serializer, lifted to this tag.
     @inlinable
     public static var serializer: Tagged<Tag, Underlying>.UnderlyingSerializer {
         Tagged<Tag, Underlying>.UnderlyingSerializer()

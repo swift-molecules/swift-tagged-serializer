@@ -19,7 +19,7 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-molecules/swift-serializer.git",
+            url: "https://github.com/swift-atoms/swift-serializer.git",
             branch: "main"
         ),
         .package(
@@ -37,7 +37,11 @@ let package = Package(
         ),
         .testTarget(
             name: "Serializer Tagged Tests",
-            dependencies: ["Serializer Tagged"]
+            dependencies: [
+                "Serializer Tagged",
+                .product(name: "Serializer", package: "swift-serializer"),
+                .product(name: "Tagged", package: "swift-tagged"),
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]
