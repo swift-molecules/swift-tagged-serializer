@@ -61,7 +61,6 @@ private struct ValueSerializer: Serializer::Serializer.`Protocol` {
     typealias Output = Value
     typealias Buffer = [Int]
     typealias Failure = TestFailure
-    typealias Body = Never
 
     borrowing func serialize(_ output: Value, into buffer: inout [Int]) throws(TestFailure) {
         guard output.rawValue >= 0 else { throw .rejected }
