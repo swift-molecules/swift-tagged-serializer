@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-serializer-tagged",
+    name: "swift-tagged-serializer",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -13,8 +13,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Serializer Tagged",
-            targets: ["Serializer Tagged"]
+            name: "Tagged Serializer",
+            targets: ["Tagged Serializer"]
         ),
     ],
     dependencies: [
@@ -29,16 +29,16 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Serializer Tagged",
+            name: "Tagged Serializer",
             dependencies: [
                 .product(name: "Serializer", package: "swift-serializer"),
                 .product(name: "Tagged", package: "swift-tagged"),
             ]
         ),
         .testTarget(
-            name: "Serializer Tagged Tests",
+            name: "Tagged Serializer Tests",
             dependencies: [
-                "Serializer Tagged",
+                .target(name: "Tagged Serializer"),
                 .product(name: "Serializer", package: "swift-serializer"),
                 .product(name: "Tagged", package: "swift-tagged"),
             ]

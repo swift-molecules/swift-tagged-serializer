@@ -1,5 +1,7 @@
-# swift-serializer-tagged
+# swift-tagged-serializer
 
-Serializer integration for `Tagged`. When an underlying value is
-`Serializable`, this package lifts its serializer to the tagged value while
-preserving the underlying serializer's buffer and failure types.
+Focused Serializer integration for the Tagged domain.
+
+`Tagged Serializer` makes a tagged value `Serializable` whenever its underlying
+value is serializable as itself. The adapter preserves the underlying
+serializer's buffer and failure types while unwrapping the tag before emitting.
